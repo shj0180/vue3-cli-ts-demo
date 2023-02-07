@@ -22,36 +22,22 @@
             class="el-menu-vertical-demo"
             default-active="2"
             text-color="#fff"
+            router
           >
+
             <el-sub-menu index="1">
               <template #title>
                 <!-- <el-icon><location /></el-icon> -->
-                <span>应用管理</span>
+                <span >应用管理</span>
               </template>
               
-              <el-menu-item index="1-1">
-                <!-- <el-icon><location /></el-icon> -->
-                应用版本
+              <el-menu-item :index="item.path" v-for="item in app_list" :key="item.path">
+                {{ item.meta.title }}
               </el-menu-item>
-              <el-menu-item index="1-2">
-                <!-- <el-icon><icon-menu /></el-icon> -->
-                应用配置
-              </el-menu-item>
-              <el-menu-item index="1-3">
-                <!-- <el-icon><icon-menu /></el-icon> -->
-                应用重启
-              </el-menu-item>
-              <el-sub-menu index="1-4">
-                <template #title>应用环境构建</template>
-                <el-menu-item index="1-4-1">过保替换</el-menu-item>
-                <el-menu-item index="1-4-2">全新应用</el-menu-item>
-              </el-sub-menu>
-
               
-
             </el-sub-menu>
 
-            <el-sub-menu>
+            <el-sub-menu index="2">
               <template #title>
                 <!-- <el-icon><location /></el-icon> -->
                 <span>数据库管理</span>
@@ -63,7 +49,7 @@
               </el-menu-item>
             </el-sub-menu>
 
-            <el-sub-menu>
+            <el-sub-menu index="3">
               <template #title>
                 <!-- <el-icon><location /></el-icon> -->
                 <span>Prometheus</span>
@@ -86,8 +72,9 @@
           </el-menu>
         </el-aside>
 
-        <el-main>
-          Main
+        <el-main >
+          Home Page
+          <RouterView ></RouterView>
         </el-main>
       </el-container>
     </el-container>
@@ -96,12 +83,18 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { useRouter } from 'vue-router';
 
 export default defineComponent({
+  name: 'HomeView', 
   setup () {
+    const router = useRouter()
+    console.log(router.getRoutes());
     
-
-    return {}
+    const app_list = router.getRoutes().filter(a => a.meta.isshow_appication)
+    console.log(app_list);
+    
+    return {app_list}
   }
 })
 </script>

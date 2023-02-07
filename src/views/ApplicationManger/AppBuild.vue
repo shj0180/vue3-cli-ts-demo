@@ -1,19 +1,18 @@
 <template>
-  <div>
-    hellp
-    
-  </div>
+    <div>
+        app - env- build
+    </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  setup () {
-    
+    setup () {
+        
 
-    return {}
-  }
+        return {}
+    }
 })
 </script>
 
