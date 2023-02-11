@@ -14,44 +14,84 @@ const routes: Array<RouteRecordRaw> = [
     // redirect: '/appversion' ,
     children: [
       {
-        path: 'version',
-        name: 'version',
+        path: 'appversion',
+        name: 'appversion',
         meta: {
           isshow_appication: true, 
           title: '应用版本'
         },
-        component: ()=> import('@/views/ApplicationManger/AppVersion.vue')
+        component: ()=> import('@/views/ApplicationManage/AppVersion.vue')
       },
       {
-        path: 'config',
-        name: 'config',
+        path: 'appconfig',
+        name: 'appconfig',
         meta: {
           isshow_appication: true,
           title: '应用配置',
         },
-        component: ()=> import('@/views/ApplicationManger/AppConfig.vue')
+        component: ()=> import('@/views/ApplicationManage/AppConfig.vue')
       },
       {
-        path: 'operate',
-        name: 'operate',
+        path: 'appoperate',
+        name: 'appoperate',
         meta: {
           isshow_appication: true,
           title: '应用操作',
         },
-        component: ()=> import('@/views/ApplicationManger/AppOperate.vue')
+        component: ()=> import('@/views/ApplicationManage/AppOperate.vue')
       },
       {
-        path: 'build',
-        name: 'build',
+        path: 'appbuild',
+        name: 'appbuild',
         meta: {
           isshow_appication: true,
           title: '应用构建',
         },
-        component: ()=> import('@/views/ApplicationManger/AppBuild.vue')
+        component: ()=> import('@/views/ApplicationManage/AppBuild.vue')
       },
-
-
-
+    ]
+  },
+  {
+    path: '/db',
+    name: 'db',
+    component: () => import(/* webpackChunkName: "about" */ '@/views/HomeView.vue'),
+    // redirect: '/appversion' ,
+    children: [
+      {
+        path: 'dbversion',
+        name: 'dbversion',
+        meta: {
+          isshow_db: true, 
+          title: '版本管理'
+        },
+        component: ()=> import('@/views/DBManage/DBVersion.vue')
+      },
+    ]
+  },
+  {
+    path: '/prometheus',
+    name: 'prometheus',
+    component: () => import(/* webpackChunkName: "about" */ '@/views/HomeView.vue'),
+    // redirect: '/appversion' ,
+    children: [
+      {
+        path: 'prometheusconfig',
+        name: 'prometheusconfig',
+        meta: {
+          isshow_prometheus: true, 
+          title: '一键配置'
+        },
+        component: ()=> import('@/views/PrometheusManage/PrometheusConfig.vue')
+      },
+      {
+        path: 'prometheusdata',
+        name: 'prometheusdata',
+        meta: {
+          isshow_prometheus: true, 
+          title: '监控数据'
+        },
+        component: ()=> import('@/views/PrometheusManage/PrometheusData.vue')
+      },
     ]
   },
   {

@@ -43,10 +43,10 @@
                 <span>数据库管理</span>
               </template>
 
-              <el-menu-item index="2-1">
-                <!-- <el-icon><icon-menu /></el-icon> -->
-                <span>版本管理</span>
+              <el-menu-item :index="item.path" v-for="item in db_list" :key="item.path">
+                {{ item.meta.title }}
               </el-menu-item>
+
             </el-sub-menu>
 
             <el-sub-menu index="3">
@@ -55,15 +55,10 @@
                 <span>Prometheus</span>
               </template>
 
-              <el-menu-item index="3-1">
-                <!-- <el-icon><icon-menu /></el-icon> -->
-                <span>一键配置</span>
+              <el-menu-item :index="item.path" v-for="item in prometheus_list" :key="item.path">
+                {{ item.meta.title }}
               </el-menu-item>
-
-              <el-menu-item index="3-2">
-                <!-- <el-icon><icon-menu /></el-icon> -->
-                <span>监控数据</span>
-              </el-menu-item>
+             
 
             </el-sub-menu>
 
@@ -93,8 +88,15 @@ export default defineComponent({
     
     const app_list = router.getRoutes().filter(a => a.meta.isshow_appication)
     console.log(app_list);
+
+    const db_list = router.getRoutes().filter(a => a.meta.isshow_db)
+    console.log(db_list);
+
+    const prometheus_list = router.getRoutes().filter(a => a.meta.isshow_prometheus)
+    console.log(prometheus_list);
+
     
-    return {app_list}
+    return {app_list, db_list, prometheus_list}
   }
 })
 </script>
