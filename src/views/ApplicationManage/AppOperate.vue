@@ -1,17 +1,20 @@
 <template>
     <div>
+        
         app - operate
+        <el-input v-model="input" placeholder="Please input" />
+
     </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 
 export default defineComponent({
     setup () {
-        
+        const input = ref('')
 
-        return {}
+        return {input}
     }
 })
 </script>

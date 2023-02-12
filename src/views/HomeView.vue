@@ -58,12 +58,19 @@
               <el-menu-item :index="item.path" v-for="item in prometheus_list" :key="item.path">
                 {{ item.meta.title }}
               </el-menu-item>
-             
-
             </el-sub-menu>
 
+            <el-sub-menu index="4">
+              <template #title>
+                <!-- <el-icon><location /></el-icon> -->
+                <span>About</span>
+              </template>
 
-          
+              <el-menu-item :index="item.path" v-for="item in about_list" :key="item.path">
+                {{ item.meta.title }}
+              </el-menu-item>
+            </el-sub-menu>
+
           </el-menu>
         </el-aside>
 
@@ -95,8 +102,11 @@ export default defineComponent({
     const prometheus_list = router.getRoutes().filter(a => a.meta.isshow_prometheus)
     console.log(prometheus_list);
 
+    const about_list = router.getRoutes().filter(a => a.meta.isshow_about)
+    console.log(about_list);
+
     
-    return {app_list, db_list, prometheus_list}
+    return {app_list, db_list, prometheus_list, about_list}
   }
 })
 </script>
